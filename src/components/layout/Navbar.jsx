@@ -39,7 +39,7 @@ const Navbar = () => {
 
         {/* Button */}
         <div className='ml-8 flex items-center gap-5'>
-              <Button/>
+              <Button size='tr' variant='secondary' className='text-white text-xl font-bold' >Get Started</Button>
         </div>        
     </div>
   )

@@ -1,6 +1,4 @@
 import React from 'react'
-import Button from '../ui/Button1'
-import Button1 from '../ui/Button1'
 
 const Sidebar = () => {
   return (

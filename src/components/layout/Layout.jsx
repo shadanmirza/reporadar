@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
-import Button from '../ui/Button1'
+
 
 
 const Layout = () => {
