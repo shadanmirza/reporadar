@@ -1,34 +1,83 @@
-import Button from '../components/ui/Button';
-import Card from '../components/ui/Card';
-import Input from '../components/ui/Input';
-import Badge from '../components/ui/Badge';
+import { useNavigate } from "react-router-dom";
+
+import HeroSection from "../components/layout/HeroSection";
+import SearchBar from "../components/ui/SearchBar";
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  // Called when a repository is selected
+  const handleSelectRepo = (owner, repo) => {
+    navigate(`/repo/${owner}/${repo}`);
+  };
+
   return (
-    <div className="p-8 space-y-6 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold">UI Components Test</h1>
-      
-      <div className="flex gap-2 flex-wrap">
-        <Button>Primary</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="danger">Danger</Button>
-        <Button size="sm">Small</Button>
-        <Button size="lg">Large</Button>
-      </div>
+    <div>
+      {/* =========================
+          Hero Section
+      ========================== */}
+      <HeroSection />
 
-      <Card>
-        <h3 className="font-bold mb-2">Card Title</h3>
-        <p className="text-gray-600 dark:text-gray-400">This is a card component.</p>
-      </Card>
+      {/* =========================
+          Search Section
+      ========================== */}
+      <section
+        className="
+          mx-auto max-w-7xl
+          px-4 pb-24
+          -mt-8
+          sm:px-6
+          lg:px-8
+        "
+      >
+        <SearchBar
+          onSelectRepo={handleSelectRepo}
+        />
+      </section>
 
-      <Input placeholder="Type something..." label="Search" />
+      {/* =========================
+          Trending Repositories
+      ========================== */}
+      <section
+        className="
+          mx-auto max-w-7xl
+          px-4 pb-24
+          sm:px-6
+          lg:px-8
+        "
+      >
+        <h2
+          className="
+            mb-6
+            text-2xl font-bold
+            text-gray-900
+            dark:text-white
+          "
+        >
+          Trending Repositories
+        </h2>
 
-      <div className="flex gap-2">
-        <Badge variant="blue">React</Badge>
-        <Badge variant="green">JavaScript</Badge>
-        <Badge variant="purple">TypeScript</Badge>
-      </div>
+        <div
+          className="
+            grid gap-4
+            md:grid-cols-2
+            lg:grid-cols-3
+          "
+        >
+          {[1, 2, 3, 4, 5, 6].map((item) => (
+            <div
+              key={item}
+              className="
+                h-32
+                animate-pulse
+                rounded-xl
+                bg-gray-100
+                dark:bg-gray-800
+              "
+            />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

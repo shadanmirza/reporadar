@@ -15,7 +15,7 @@ const Button = ({
     primary:
       "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
     secondary:
-      "bg-orange-600 cursor-pointer active:scale-95 hover:bg-orange-700 ",
+      "bg-orange-600 cursor-pointer active:scale-95 hover:bg-orange-700 text-white ",
     outline:
       "border border-gray-300 bg-transparent text-gray-900 hover:bg-gray-100 focus:ring-gray-400",
     danger:
@@ -26,8 +26,8 @@ const Button = ({
 
   const sizes = {
     sm: "h-8 px-3 text-sm",
-    md: "h-10 px-4  font-bold",
-    lg: "h-12 px-6 text-base",
+    md: "h-10 px-6 text-sm",
+    lg: "h-12 px-8 text-lg",
     tr: "px-3 py-1 "
   };
 
