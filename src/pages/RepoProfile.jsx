@@ -19,7 +19,8 @@ export default function RepoProfile() {
         Back to search
       </Link>
 
-      {/* Header */}
+     
+
       <div className="mb-8">
         {loading ? (
           <div className="flex items-center gap-4">
@@ -30,20 +31,18 @@ export default function RepoProfile() {
             </div>
           </div>
         ) : (
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-2xl font-bold text-primary-600">
-              {owner[0].toUpperCase()}
-            </div>
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-                {owner}/{repo}
-              </h1>
-              <p className="text-gray-600 dark:text-gray-400 mt-1">
-                Repository description will appear here...
-              </p>
-            </div>
+          <div className='flex items-center gap-4'>
+          <div className="w-16 h-16 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center
+                          justify-center text-2xl font-bold text-primary-600">
+                            {owner[0].toUpperCase()} 
+           </div>
+           <div>
+            <h1 className='text-3xl font-bold text-gray-900 dark:text-white'>{owner}/{repo}</h1>
+            <p className='text-gray-600 dark:text-gray-400 mt-1'>Repository description will appear here...</p>
+           </div>
           </div>
-        )}
+         )
+        }
       </div>
 
       {/* Stats Grid */}
@@ -60,8 +59,8 @@ export default function RepoProfile() {
             <p className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
           </Card>
         ))}
-      </div>
 
+      </div>
       {/* Content Grid */}
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Main Content */}
@@ -132,4 +131,4 @@ export default function RepoProfile() {
       </div>
     </div>
   );
-}
+} 

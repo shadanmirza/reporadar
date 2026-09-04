@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import HeroSection from "../components/layout/HeroSection";
 import SearchBar from "../components/ui/SearchBar";
 
+
 export default function Home() {
   const navigate = useNavigate();
 
@@ -77,6 +78,9 @@ export default function Home() {
             />
           ))}
         </div>
+      
+      
+      
       </section>
     </div>
   );
