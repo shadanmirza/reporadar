@@ -79,4 +79,4 @@ export function getLanguages(owner, repo) {
 export function getCommitActivity(owner, repo) {
   
   return fetchGitHub(`/repos/${owner}/${repo}/stats/commit_activity`);
-}
+} 
