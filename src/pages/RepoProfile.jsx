@@ -44,6 +44,7 @@ export default function RepoProfile() {
     );
   }
 
+  
     // Show full-page skeleton while main data loads
     if(isLoading){
       return <RepoProfileSkeleton />;
