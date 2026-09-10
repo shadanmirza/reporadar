@@ -19,6 +19,7 @@ export default function RepoProfile() {
   const { data: languages, loading: languagesLoading } = useLanguages(owner, repo);
   const { data: commitActivity, loading: activityLoading } = useCommitActivity(owner, repo);
 
+
   // Combined loading for initial load
   const isLoading = repoLoading || !repoData;
   
@@ -44,7 +45,7 @@ export default function RepoProfile() {
     );
   }
 
-  
+
     // Show full-page skeleton while main data loads
     if(isLoading){
       return <RepoProfileSkeleton />;
