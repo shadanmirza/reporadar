@@ -4,12 +4,7 @@ import { Loader2, Search, GitBranch } from "lucide-react";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useSearchRepos } from "../../hooks/useRepository";
 
-const quickSuggestions = [
-  "facebook/react",
-  "vercel/next.js",
-  "microsoft/vscode",
-  "tailwindlabs/tailwindcss",
-];
+
 
 export default function SearchBar({ onSelectRepo }) {
   const [query, setQuery] = useState("");
@@ -21,11 +16,11 @@ export default function SearchBar({ onSelectRepo }) {
   const { data, loading, error } = useSearchRepos(debouncedQuery);
 
 
-  console.log("query:", query);
-  console.log("debouncedQuery:", debouncedQuery);
-  console.log("data:", data);
-  console.log("loading:", loading);
-  console.log("error:", error);
+  // console.log("query:", query);
+  // console.log("debouncedQuery:", debouncedQuery);
+  // console.log("data:", data);
+  // console.log("loading:", loading);
+  // console.log("error:", error);
 
   const handleSelect = (owner, repo) => {
     onSelectRepo(owner, repo);
