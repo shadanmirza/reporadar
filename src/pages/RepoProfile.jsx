@@ -10,6 +10,9 @@ import {
   useCommitActivity 
 } from "../hooks/useRepository";
 
+import CommitActivityChart from '../components/charts/CommitActivityChart';
+
+
 export default function RepoProfile() {
   const { owner, repo } = useParams();
 
@@ -134,7 +137,7 @@ export default function RepoProfile() {
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
-          <Card>
+          {/* <Card>
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               Commit Activity (Last Year)
             </h2>
@@ -152,7 +155,12 @@ export default function RepoProfile() {
             ) : (
               <p className="text-gray-500">No activity data available</p>
             )}
-          </Card>
+          </Card> */}
+
+          <CommitActivityChart 
+           data={commitActivity} 
+           loading={activityLoading} 
+          />
 
 
 
