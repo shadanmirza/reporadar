@@ -62,6 +62,7 @@ export default function CommitActivityChart({ data, loading }) {
         </div>
       </Card>
     );
+    
   }
 
   /**
