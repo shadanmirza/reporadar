@@ -166,6 +166,7 @@ export default function CommitActivityChart({ data, loading }) {
                 axisLine={false}
               />
 
+
               {/* Tooltip */}
               <Tooltip content={<CustomTooltip />} />
 
