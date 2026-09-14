@@ -11,6 +11,7 @@ import {
 } from "../hooks/useRepository";
 
 import CommitActivityChart from '../components/charts/CommitActivityChart';
+import LanguageChart from '../components/charts/LanguageChart';
 
 
 export default function RepoProfile() {
@@ -136,27 +137,7 @@ export default function RepoProfile() {
       {/* Content Grid */}
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Main Content */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* <Card>
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              Commit Activity (Last Year)
-            </h2>
-             {activityLoading ? (
-              <Skeleton className="h-48 w-full" />
-            ) : commitActivity && Array.isArray(commitActivity) ? (
-              <div className="space-y-2">
-                <p className="text-sm text-gray-500">
-                  Total commits: {commitActivity.reduce((sum, week) => sum + week.total, 0).toLocaleString()}
-                </p>
-                <pre className="text-xs bg-gray-100 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto">
-                  {JSON.stringify(commitActivity.slice(0, 4), null, 2)}
-                </pre>
-              </div>
-            ) : (
-              <p className="text-gray-500">No activity data available</p>
-            )}
-          </Card> */}
-
+        <div className="lg:col-span-2 space-y-6">        
           <CommitActivityChart 
            data={commitActivity} 
            loading={activityLoading} 
@@ -203,92 +184,13 @@ export default function RepoProfile() {
          {/* Sidebar */}
          <div className="space-y-6">
 
-         {/* Languages */}
-         <Card>
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-            Languages
-          </h2>
-
-      {languagesLoading ? (
-        <Skeleton className="h-32 w-full" />
-        ) : languages && Object.keys(languages).length > 0 ? (
-      <div>
-        {(() => {
-          const languageEntries = Object.entries(languages);
-
-          const total = languageEntries.reduce(
-            (sum, [, bytes]) => sum + bytes,
-            0
-          );
-
-          const colors = [
-            "bg-blue-500",
-            "bg-yellow-500",
-            "bg-purple-500",
-            "bg-green-500",
-            "bg-red-500",
-            "bg-pink-500",
-            "bg-cyan-500",
-            "bg-orange-500",
-          ];
-
-          return (
-            <>
-              {/* Progress Bar */}
-              <div className="h-3 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden flex">
-                {languageEntries.map(([lang, bytes], index) => {
-                  const percentage = (bytes / total) * 100;
-
-                  return (
-                    <div
-                      key={lang}
-                      className={`h-full ${colors[index % colors.length]}`}
-                      style={{ width: `${percentage}%` }}
-                      title={`${lang}: ${percentage.toFixed(1)}%`}
-                    />
-                  );
-                })}
-              </div>
-
-              {/* Legend */}
-              <div className="mt-4 space-y-2">
-                {languageEntries.map(([lang, bytes], index) => {
-                  const percentage = ((bytes / total) * 100).toFixed(1);
-
-                  return (
-                    <div
-                      key={lang}
-                      className="flex items-center justify-between text-sm"
-                    >
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`w-3 h-3 rounded-full ${
-                            colors[index % colors.length]
-                          }`}
-                        />
-
-                        <span className="text-gray-700 dark:text-gray-300">
-                          {lang}
-                        </span>
-                      </div>
-
-                      <span className="text-gray-500 dark:text-gray-400">
-                        {percentage}%
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </>
-          );
-        })()}
-      </div>
-    ) : (
-      <p className="text-gray-500 dark:text-gray-400">
-        No language data available
-      </p>
-    )}
-  </Card>
+         {/* Languages  */}
+         {/* NEW */}
+         <LanguageChart 
+          data={languages} 
+          loading={languagesLoading} 
+         />
+         
 
 
 
