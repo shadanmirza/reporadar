@@ -11,6 +11,7 @@ import {
 
 import { transformCommitActivity } from "../../utils/chartHelpers";
 import Card from "../ui/Card";
+import Skeleton from "../ui/Skeleton"
 
 /**
  * Custom tooltip for the commit activity chart
@@ -96,7 +97,7 @@ export default function CommitActivityChart({ data, loading }) {
            */
           <div className="flex h-full items-center justify-center">
             <div className="flex w-full space-x-4">
-              <div className="h-full w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
+            <Skeleton className="h-full w-full"/>
             </div>
           </div>
         ) : (
