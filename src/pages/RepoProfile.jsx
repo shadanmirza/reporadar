@@ -12,6 +12,7 @@ import {
 
 import CommitActivityChart from '../components/charts/CommitActivityChart';
 import LanguageChart from '../components/charts/LanguageChart';
+import ContributorsChart from '../components/charts/ContributorsChart';
 
 
 export default function RepoProfile() {
@@ -146,7 +147,7 @@ export default function RepoProfile() {
 
 
             {/* Contributors */}
-          <Card>
+          {/* <Card>
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               Top Contributors
             </h2>
@@ -177,8 +178,14 @@ export default function RepoProfile() {
             ) : (
               <p className="text-gray-500">No contributor data</p>
             )}
-          </Card>
-        </div>
+          </Card> */}
+          
+        {/* NEW */}
+        <ContributorsChart 
+         data={contributors} 
+         loading={contributorsLoading} 
+        />
+      </div>
 
 
          {/* Sidebar */}
