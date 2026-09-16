@@ -80,3 +80,12 @@ export function getCommitActivity(owner, repo) {
   
   return fetchGitHub(`/repos/${owner}/${repo}/stats/commit_activity`);
 } 
+
+// Get "trending" by searching for repos with >1000 stars, sorted by updated
+export function getTrendingRepositories() {
+  //Query: stars:>1000, sorted by recently updated
+
+  return fetchGitHub(
+    '/search/repositories?q=stars:>1000&sort=updated&order=desc&per_page=6'
+  )
+}

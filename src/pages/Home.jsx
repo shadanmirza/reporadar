@@ -4,7 +4,9 @@ import HeroSection from "../components/layout/HeroSection";
 import SearchBar from "../components/ui/SearchBar";
 import Card from '../components/ui/Card';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-
+import { useTrendingRepos } from "../hooks/useRepository";
+import RepoCard from "../components/RepoCard";
+import Skeleton from "../components/ui/Skeleton"
 
 export default function Home() {
   const navigate = useNavigate();
@@ -30,13 +32,14 @@ export default function Home() {
     );
   };
 
+  const { data: trendingData, loading: trendingLoading } = useTrendingRepos();
+
   return (
     <div>
       {/* =========================
           Hero Section
       ========================== */}
       <HeroSection />
-
 
 
 
@@ -84,6 +87,27 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* Trending Repos Section */}     
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+     Trending Repositories
+    </h2>
+  
+    {trendingLoading ? (
+     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {[1, 2, 3, 4, 5, 6].map((i) => (
+        <Skeleton key={i} className="h-32 w-full" />
+      ))}
+     </div>
+     ) : (
+     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {trendingData?.items?.map((repo) => (
+        <RepoCard key={repo.id} repo={repo} />
+      ))}
+     </div>
+    )}
+    </div>
     </div>
   );
 }

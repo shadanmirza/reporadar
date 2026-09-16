@@ -5,7 +5,8 @@ import {
   getRepository, 
   getContributors, 
   getLanguages, 
-  getCommitActivity 
+  getCommitActivity, 
+  getTrendingRepositories
 } from "../services/githubApi";
 
 
@@ -47,4 +48,11 @@ export function useCommitActivity(owner, repo) {
     () => getCommitActivity(owner, repo),
     [owner, repo]
   );
+}
+
+export function useTrendingRepos() {
+    return useGitHubData(
+        () => getTrendingRepositories(),
+        [] // Empty array = fatch once on mount, never again
+    );
 }
