@@ -79,7 +79,7 @@ export default function LanguageChart({ data, loading }) {
   }
 
   return (
-    <Card>
+    <Card className='animate-fade-in-up'>
       <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
         Languages
       </h2>

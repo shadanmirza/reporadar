@@ -75,7 +75,7 @@ export default function CommitActivityChart({ data, loading }) {
   );
 
   return (
-    <Card>
+    <Card className="animate-fade-in-up">
       {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-lg font-semibold text-gray-900 dark:text-white">

@@ -7,7 +7,7 @@ export default function RepoCard({ repo }) {
   const navigate = useNavigate();
   
   return(
-    <Card className="cursor-pointer hover:shadow-lg hover:border-primary-200 dark:hover:border-primary-800 transition-all group"
+    <Card className="cursor-pointer hover:scale-[1.02] duration-300 hover:shadow-xl hover:border-primary-200 dark:hover:border-primary-800 transition-all group"
       onClick={() => navigate(`/repo/${repo.owner.login}/${repo.name}`)}>
       <div className="flex items-start gap-3">
         <img

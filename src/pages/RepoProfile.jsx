@@ -69,7 +69,7 @@ export default function RepoProfile() {
 
      
       {/* Header */}
-      <div className="mb-8">
+      <div className="mb-8 animate-fade-in-up">
         <div className='flex items-start gap-4'>
 
          <img src={repoData.owner.avatar_url} alt={repoData.owner.login}
@@ -95,7 +95,7 @@ export default function RepoProfile() {
 
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">         
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 stagger-children">         
         <Card 
           className='text-center h-40'
         >
@@ -146,39 +146,7 @@ export default function RepoProfile() {
 
 
 
-            {/* Contributors */}
-          {/* <Card>
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              Top Contributors
-            </h2>
-            {contributorsLoading ? (
-              <div className="space-y-3">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Skeleton key={i} className="h-12 w-full" />
-                ))}
-              </div>
-            ) : contributors?.length > 0 ? (
-              <div className="space-y-3">
-                {contributors.map((contributor) => (
-                  <div key={contributor.id} className="flex items-center gap-3">
-                    <img
-                      src={contributor.avatar_url}
-                      alt={contributor.login}
-                      className="w-10 h-10 rounded-full"
-                    />
-                    <span className="font-medium text-gray-900 dark:text-white">
-                      {contributor.login}
-                    </span>
-                    <span className="text-sm text-gray-500 ml-auto">
-                      {contributor.contributions.toLocaleString()} commits
-                    </span>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-gray-500">No contributor data</p>
-            )}
-          </Card> */}
+            {/* Contributors */}         
           
         {/* NEW */}
         <ContributorsChart 

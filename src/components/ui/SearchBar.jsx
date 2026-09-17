@@ -57,7 +57,10 @@ export default function SearchBar({ onSelectRepo }) {
             focus:ring-2
             focus:ring-primary-500
             shadow-lg
-            transition-all
+            
+            focus:scale-[1.01]
+            transition-transform
+            duration-200
           "
         />
 
@@ -75,7 +78,7 @@ export default function SearchBar({ onSelectRepo }) {
 
       {/* Results Dropdown */}
       {data?.items?.length > 0 && query && (
-        <ul className="absolute z-50 w-full mt-2 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <ul className="absolute z-50 w-full mt-2 stagger-children bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
           {data.items.map((repo) => (
             <li
               key={repo.id}

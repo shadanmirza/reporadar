@@ -28,7 +28,7 @@ const Navbar = () => {
 
   const navLinks = [
     { to: '/home', label: 'Home' },
-    { to: '/repo', label: 'RepoProfile' },
+    // { to: '/repo', label: 'RepoProfile' },
     { to: '/compare', label: 'Compare' },
     // { to: '/about', label: 'About Us' },
   ];
@@ -55,7 +55,7 @@ const Navbar = () => {
           <Link
             key={link.to}
             to={link.to}
-            className={`text-[15px] md:text-[17px] font-semibold transition hover:text-gray-400 whitespace-nowrap ${
+            className={`text-[15px] md:text-[17px] font-semibold transition whitespace-nowrap ${
               isActive(link.to)
                 ? 'text-amber-600 dark:text-amber-400'
                 : 'text-black dark:text-white'
