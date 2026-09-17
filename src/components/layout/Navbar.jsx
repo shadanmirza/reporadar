@@ -33,6 +33,7 @@ const Navbar = () => {
     // { to: '/about', label: 'About Us' },
   ];
 
+
   const isActive = (path) => location.pathname === path;
 
   return (
