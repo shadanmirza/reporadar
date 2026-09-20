@@ -14,6 +14,8 @@ import CommitActivityChart from '../components/charts/CommitActivityChart';
 import LanguageChart from '../components/charts/LanguageChart';
 import ContributorsChart from '../components/charts/ContributorsChart';
 
+import ErrorBoundary from '../components/ErrorBoundary';
+
 
 export default function RepoProfile() {
   const { owner, repo } = useParams();
@@ -139,20 +141,24 @@ export default function RepoProfile() {
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">        
-          <CommitActivityChart 
-           data={commitActivity} 
-           loading={activityLoading} 
-          />
+           <ErrorBoundary fallbackMessage="Could not load commit activity chart.">
+             <CommitActivityChart 
+             data={commitActivity} 
+             loading={activityLoading} 
+             />
+           </ErrorBoundary>
 
 
 
             {/* Contributors */}         
           
         {/* NEW */}
-        <ContributorsChart 
-         data={contributors} 
-         loading={contributorsLoading} 
-        />
+          <ErrorBoundary fallbackMessage="Could not load contributors chart.">
+            <ContributorsChart 
+            data={contributors} 
+            loading={contributorsLoading} 
+            />
+          </ErrorBoundary>
       </div>
 
 
@@ -161,10 +167,12 @@ export default function RepoProfile() {
 
          {/* Languages  */}
          {/* NEW */}
+         <ErrorBoundary fallbackMessage="Could not load language data.">
          <LanguageChart 
           data={languages} 
           loading={languagesLoading} 
          />
+         </ErrorBoundary>
          
 
 
