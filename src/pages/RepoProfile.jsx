@@ -13,7 +13,7 @@ import {
 import CommitActivityChart from '../components/charts/CommitActivityChart';
 import LanguageChart from '../components/charts/LanguageChart';
 import ContributorsChart from '../components/charts/ContributorsChart';
-
+import SEO from '../components/SEO';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 
@@ -59,6 +59,14 @@ export default function RepoProfile() {
     }
 
   return (
+     <>
+     {repoData && (
+      <SEO 
+       title={`${repoData.full_name} — RepoRadar Analytics`}
+       description={`Analyze ${repoData.full_name}: ${repoData.stargazers_count.toLocaleString()} stars, ${repoData.forks_count.toLocaleString()} forks. View commit activity, languages, and contributors.`}
+      />
+    )}
+    
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Back Button */}
       <Link
@@ -243,6 +251,7 @@ export default function RepoProfile() {
         </div>
       </div>
     </div>
+    </>
   );
 } 
 

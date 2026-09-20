@@ -7,6 +7,8 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useTrendingRepos } from "../hooks/useRepository";
 import RepoCard from "../components/RepoCard";
 import Skeleton from "../components/ui/Skeleton"
+import SEO from "../components/SEO"
+
 
 export default function Home() {
   const navigate = useNavigate();
@@ -36,6 +38,9 @@ export default function Home() {
 
   return (
     <div>
+
+      <SEO />
+
       {/* =========================
           Hero Section
       ========================== */}
