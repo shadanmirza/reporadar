@@ -19,6 +19,7 @@ function CompareCard({title, owner, repo, onRemove}) {
           {title}
         </h3>
         <button onClick={onRemove}
+         aria-label={`Remove ${title} from comparison`}
          className='p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded'>
           <X className='w-4 h-4 text-gray-400'/>
          </button>
@@ -38,7 +39,11 @@ function CompareCard({title, owner, repo, onRemove}) {
           <img src={data.owner.avatar_url} alt="" className="w-8 h-8 rounded-full" />
           <h3 className="font-bold text-lg text-gray-900 dark:text-white">{data.full_name}</h3>
         </div>
-        <button onClick={onRemove} className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
+        <button
+          onClick={onRemove}
+          aria-label={`Remove ${data.full_name} from comparison`}
+          className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
+        >
           <X className="w-4 h-4 text-gray-400" />
         </button>
       </div>

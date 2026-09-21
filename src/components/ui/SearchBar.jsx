@@ -38,6 +38,7 @@ export default function SearchBar({ onSelectRepo }) {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          aria-label="Search GitHub repositories"
           placeholder="Search repositories (e.g., facebook/react)..."
           className="
             w-full

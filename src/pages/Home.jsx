@@ -82,6 +82,7 @@ export default function Home() {
                   </div>
                   <button
                     onClick={(e) => removeRecent(e, search.owner, search.repo)}
+                    aria-label={`Remove ${search.owner}/${search.repo} from recent searches`}
                     className="p-1 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
                   >
                     <X className="w-4 h-4 text-gray-400" />
