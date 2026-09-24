@@ -6,6 +6,7 @@ import Card from '../components/ui/Card';
 import SearchBar from '../components/ui/SearchBar';
 import LanguageChart from '../components/charts/LanguageChart';
 import Skeleton from '../components/ui/Skeleton';
+import PagesNavbar from '../components/layout/PagesNavbar'
 
 function CompareCard({title, owner, repo, onRemove}) {
   const {data, loading} = useRepoDetails(owner, repo);
@@ -33,6 +34,9 @@ function CompareCard({title, owner, repo, onRemove}) {
   if (!data) return null;
 
   return (
+
+
+
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -69,7 +73,7 @@ function CompareCard({title, owner, repo, onRemove}) {
       <LanguageChart data={languages} loading={langLoading} />
     </div>
   )
-
+ 
 }
 
 export default function Compare() {
@@ -90,7 +94,12 @@ export default function Compare() {
   };
 
   return (
+    <>
+
+     <PagesNavbar/>
+
      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      
       <div className="flex items-center gap-3 mb-8">
         <GitCompare className="w-8 h-8 text-primary-600" />
         <div>
@@ -138,5 +147,7 @@ export default function Compare() {
         </div>
       )}
     </div>
+    </>
   );
+  
 }

@@ -8,6 +8,7 @@ import { useTrendingRepos } from "../hooks/useRepository";
 import RepoCard from "../components/RepoCard";
 import Skeleton from "../components/ui/Skeleton"
 import SEO from "../components/SEO"
+import PagesNavbar from "../components/layout/PagesNavbar"
 
 
 export default function Home() {
@@ -40,18 +41,22 @@ export default function Home() {
     <div>
 
       <SEO />
+      
+      
+      <PagesNavbar/>
+
 
       {/* =========================
           Hero Section
       ========================== */}
-      <HeroSection />
+      {/* <HeroSection /> */}
 
 
 
       {/* =========================
           Search Section
       ========================== */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 mt-18">
         <SearchBar onSelectRepo={handleSelectRepo} />
       </div>
 
@@ -95,7 +100,7 @@ export default function Home() {
       )}
 
       {/* Trending Repos Section */}     
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <div id="trending" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
     <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
      Trending Repositories
     </h2>

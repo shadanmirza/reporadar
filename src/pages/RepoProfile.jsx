@@ -3,6 +3,7 @@ import { ArrowLeft, Star, GitFork, Eye, AlertCircle } from 'lucide-react';
 import Card from '../components/ui/Card';
 import Skeleton from '../components/ui/Skeleton';
 import Badge from '../components/ui/Badge';
+import PagesNavbar from '../components/layout/PagesNavbar'
 import { 
   useRepoDetails, 
   useContributors, 
@@ -15,6 +16,7 @@ import LanguageChart from '../components/charts/LanguageChart';
 import ContributorsChart from '../components/charts/ContributorsChart';
 import SEO from '../components/SEO';
 import ErrorBoundary from '../components/ErrorBoundary';
+
 
 
 export default function RepoProfile() {
@@ -68,6 +70,8 @@ export default function RepoProfile() {
     )}
     
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+ 
+
       {/* Back Button */}
       <Link
         to="/home"
