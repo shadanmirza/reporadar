@@ -1,8 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button from '../ui/Button'
 import { ArrowRight } from 'lucide-react'
 
 const HeroSection = () => {
+  const navigate = useNavigate()
+
   return (
     <>
      <div className='mt-38 '>
@@ -31,7 +34,9 @@ const HeroSection = () => {
             dashboard.
           </p>
             
-          <Button variant='secondary' size='lg' className='mt-5 -ml-3 '>Get Started <ArrowRight/>
+          <Button 
+          onClick={() => navigate('/home')}
+          variant='secondary' size='lg' className='mt-5 -ml-3 '>Get Started <ArrowRight/>
              </Button>
 
           
