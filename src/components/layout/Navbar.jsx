@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Moon, Sun, BarChart3 } from 'lucide-react';
+import { Moon, Sun, BarChart3, Menu, X, Home, Scale, CircleHelp, Info } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 // Inline GitHub SVG (lucide-react removed brand icons)
@@ -25,69 +25,154 @@ const GitHubIcon = ({ className }) => (
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
+  const [open, setOpen] = useState(false);
 
   const navLinks = [
-    { to: '/home', label: 'Home' },
-    // { to: '/repo', label: 'RepoProfile' },
-    { to: '/compare', label: 'Compare' },
-    // { to: '/about', label: 'About Us' },
+    { to: '/home', label: 'Home', icon: Home, },
+    { to: '/compare', label: 'Compare', icon: Scale, },
+    { href: '#faq', label: 'FAQ', icon: CircleHelp, },
+    { href: '#about-us', label: 'About Us', icon: Info, },
   ];
-
 
   const isActive = (path) => location.pathname === path;
 
-  return (
-    <div className='mx-auto relative mt-8 flex h-16 w-[calc(100%-40px)] max-w-6xl bg-white items-center rounded-[17px] border-amber-100
-                   border dark:border-[#302e2c] dark:bg-[#171615] px-5 text-black dark:text-white'>
+  function renderNavLink(link, mobile = false) {
+    const Icon = link.icon;
+    const active = link.to && isActive(link.to);
+    const className = mobile
+      ? `block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+          active
+            ? 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20'
+            : 'text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-white/5'
+        }`
+      : `relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
+          active
+            ? 'text-amber-600 dark:text-amber-400'
+            : 'text-black dark:text-white hover:text-white hover:bg-white/5'
+        }`;
+    const children = mobile ? (
+      link.label
+    ) : (
+      <>
+        <Icon className="h-4 w-4" />
+        {link.label}
+      </>
+    );
 
-      {/* Logo - mr-auto pushes everything else to the right */}
-      <Link to='/' className="flex items-center gap-2.5  mr-auto group shrink-0">
-        <div className='flex h-10 w-10 items-center justify-center rounded-[9px] bg-amber-100 dark:bg-amber-900/30'>
-          <BarChart3 className="w-6 h-6 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform" />
-        </div>
-        <span className='text-xl font-bold text-black dark:text-white'>
-          RepoReader
-        </span>
+    if (link.href) {
+      return (
+        <a
+          key={link.href}
+          href={link.href}
+          onClick={() => setOpen(false)}
+          className={className}
+        >
+          {children}
+        </a>
+      );
+    }
+
+    return (
+      <Link key={link.to} to={link.to} className={className}>
+        {children}
       </Link>
+    );
+  }
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  return (
+    <header className="sticky top-0 z-50 px-4 pt-4  ">
+
+      <nav className="max-w-6xl mx-auto
+          flex items-center justify-between
+          h-15 px-4 sm:px-5
+          rounded-2xl
+          border border-white/10
+          dark:border-[#302e2c]
+          dark:bg-[#0B1120]/80
+          backdrop-blur-xl
+          shadow-lg shadow-black/10">
+
+        {/* Logo */}
+        <Link to='/' className="flex items-center gap-2.5 shrink-0 group">
+          <div className='flex h-9 w-9 items-center justify-center rounded-[9px] bg-amber-100 dark:bg-amber-900/30'>
+            <BarChart3 className="w-5 h-5 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform" />
+          </div>
+          <span className='text-lg font-bold'>
+            Repo<span className="text-yellow-400">Reader</span>
+          </span>
+        </Link>
+
+
 
       {/* Navigation Links - centered between logo and buttons */}
-      <div className='flex absolute left-1/2 -translate-x-1/2  items-center sm:flex gap-5 md:gap-6'>
-        {navLinks.map((link) => (
-          <Link
-            key={link.to}
-            to={link.to}
-            className={`text-[15px] md:text-[17px] font-semibold transition whitespace-nowrap ${
-              isActive(link.to)
-                ? 'text-amber-600 dark:text-amber-400'
-                : 'text-black dark:text-white'
-            }`}
+      <div className='absolute left-1/2 hidden -translate-x-1/2 items-center gap-5 lg:flex'>
+        {navLinks.map((link) => renderNavLink(link))}
+      </div>
+
+
+
+        {/* Right Side */}
+        <div className="flex items-center gap-1 ml-auto shrink-0">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors"
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
           >
-            {link.label}
+            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
+
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open GitHub in a new tab"
+            className="hidden md:inline-flex p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors"
+          >
+            <GitHubIcon className="w-5 h-5" />
+          </a>
+
+          
+          
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="lg:hidden border-t border-amber-100 dark:border-[#302e2c] px-5 py-4 space-y-1 bg-white dark:bg-[#171615]">
+          {navLinks.map((link) => renderNavLink(link, true))}
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+          >
+            <GitHubIcon className="w-4 h-4" />
+            GitHub
+          </a>
+          <Link
+            to="/get-started"
+            className="mt-2 block rounded-md bg-amber-600 px-3 py-2 text-center text-sm font-medium text-white
+                       transition-colors hover:bg-amber-700 dark:bg-amber-500 dark:text-black dark:hover:bg-amber-400"
+          >
+            Get Started
           </Link>
-        ))}
-      </div>
-
-      {/* Right Side - ml-auto pushes to far right */}
-      <div className="flex items-center gap-1 ml-auto shrink-0">
-        <button
-          onClick={toggleTheme}
-          className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors"
-          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-        >
-          {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-        </button>
-
-        <a
-          href="https://github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open GitHub in a new tab"
-          className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors"
-        >
-          <GitHubIcon className="w-5 h-5" />
-        </a>
-      </div>
-    </div>
+        </div>
+      )}
+    </header>
   )
 }
 
