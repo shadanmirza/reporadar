@@ -31,13 +31,18 @@ Analyze any GitHub repository with interactive charts, live search, dark mode, a
 
 ### Home (Light / Dark)
 
-![Home — Light Mode](./screenshots/home-light.png)
-![Home — Dark Mode](./screenshots/home-dark.png)
+![Home — Light Mode](./src/assets/home-light.png)
+![Home — Dark Mode](./src/assets/home-dark.png)
 
 ### Repository Analytics
 
-![Repo Profile — Light Mode](./screenshots/profile-light.png)
-![Repo Profile — Dark Mode](./screenshots/profile-dark.png)
+![Repo Profile — Light Mode](./src/assets/profile-light.png)
+![Repo Profile — Dark Mode](./src/assets/profile-dark.png)
+
+### Compare
+
+![Compare — Light Mode](./src/assets/compare-light.png)
+![Compare — Dark Mode](./src/assets/compare-dark.png)
 
 ---
 
@@ -72,11 +77,11 @@ Try searching: `facebook/react`, `vercel/next.js`, or `microsoft/vscode`.
 src/
 ├── components/
 │   ├── charts/          # Recharts wrappers (Area, Donut, Bar)
-│   ├── ui/              # Reusable primitives (Button, Card, Input, Badge, Skeleton)
-│   └── layout/          # Navbar, Footer
+│   ├── ui/              # Reusable primitives (Button, Card, Input, Badge, Skeleton)│   └── layout/          # Navbar, Footer
 ├── pages/               # Home, RepoProfile, Compare, NotFound
-├── hooks/               # useGitHubData, useRepository, useDebounce, useLocalStorage
-├── services/            # API layer — all GitHub REST calls in one place
+├── hooks/               # useGitHubData, useRepository, useDebounce, 
+useLocalStorage
+├── services/            # API layer — all GitHub Api calls in one place
 ├── context/             # ThemeContext (dark mode)
 ├── utils/               # Data transformers for chart-ready shapes
 └── ErrorBoundary.jsx    # Crash isolation for chart widgets
@@ -113,7 +118,7 @@ src/
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/reporadar.git
+git clone https://github.com/shadanmirza/reporadar.git
 cd reporadar
 
 # Install dependencies
@@ -154,7 +159,7 @@ npm run preview   # preview the production build locally
 
 ## 📄 License
 
-MIT © [Your Name](https://github.com/YOUR_USERNAME)
+MIT © [MOHD SHADAN](https://github.com/shadanmirza)
 
 ---
 
