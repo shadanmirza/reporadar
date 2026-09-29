@@ -73,7 +73,7 @@ export default function PagesNavbar() {
               <BarChart3 className="h-5 w-5 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform" />
             </span>
             <span className="text-lg font-bold tracking-tight dark:text-white sm:text-xl">
-              Repo<span className="text-yellow-400">Reader</span>
+              Repo<span className="text-yellow-400">Radar</span>
             </span>
           </Link>
 

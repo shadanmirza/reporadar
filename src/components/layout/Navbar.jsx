@@ -103,7 +103,7 @@ const Navbar = () => {
             <BarChart3 className="w-5 h-5 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform" />
           </div>
           <span className='text-lg font-bold'>
-            Repo<span className="text-yellow-400">Reader</span>
+            Repo<span className="text-yellow-400">Radar</span>
           </span>
         </Link>
 
