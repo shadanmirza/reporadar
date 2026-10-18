@@ -1,5 +1,11 @@
+export interface ChartWeek {
+  week: string;
+  fullDate: string;
+  commits: number;
+}
+
 // Convert GitHub's commit activity to chart-friendly format
-export function transformCommitActivity(rawData) {
+export function transformCommitActivity(rawData: unknown): ChartWeek[] {
   if (!Array.isArray(rawData)) return [];
   
   return rawData.map((weekData) => {
@@ -21,7 +27,7 @@ export function transformCommitActivity(rawData) {
 }
 
 // Calculate total commits from activity data
-export function getTotalCommits(activityData) {
+export function getTotalCommits(activityData: any) {
   if (!Array.isArray(activityData)) return 0;
   return activityData.reduce((sum, week) => sum + week.total, 0);
 }

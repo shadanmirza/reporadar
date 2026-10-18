@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react'
 
 // This is a GENERIC hook. It doesn't know about GitHub specifically.
 // It just knows: "I have a function that returns a Promise, and some dependencies."
-export function useGitHubData(fetchFunction, dependencies = []) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+export function useGitHubData<T>(fetchFunction: () => Promise<T>, dependencies: unknown[] = []) {
+
+  const [data, setData] = useState<T | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Only skip if the FIRST dependency is empty.
@@ -44,7 +45,7 @@ export function useGitHubData(fetchFunction, dependencies = []) {
         }
       } catch (err) {
         if (!cancelled) {
-          setError(err.message);
+          setError(err instanceof Error ? err.message : "Unknown error");
         }
       } finally {
         if (!cancelled) {
